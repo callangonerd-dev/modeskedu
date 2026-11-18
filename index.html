@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<html lang="pt-BR"><head><script>/* MODESK ISOLAMENTO — app: edu. Cada sistema guarda dados em seu próprio espaço; nada é compartilhado com os outros Modesks. */
+(function(){var NS="mdk:edu:",MK=NS+"__migrado",P=Storage.prototype,g=P.getItem,s=P.setItem,r=P.removeItem,k=P.key,L=Object.getOwnPropertyDescriptor(P,"length").get,RX=/^(modesk_edu|modesk_dados|edu_|sb-)/;
+function own(st){var a=[],n=L.call(st);for(var i=0;i<n;i++){var x=k.call(st,i);if(x&&x.indexOf(NS)===0&&x!==MK)a.push(x.slice(NS.length));}return a;}
+try{[localStorage,sessionStorage].forEach(function(st){if(g.call(st,MK))return;var n=L.call(st),ks=[];for(var i=0;i<n;i++){var x=k.call(st,i);if(x&&x.indexOf("mdk:")!==0&&RX.test(x))ks.push(x);}ks.forEach(function(x){if(g.call(st,NS+x)===null)s.call(st,NS+x,g.call(st,x));});s.call(st,MK,"1");});}catch(e){}
+P.getItem=function(x){return g.call(this,NS+x);};P.setItem=function(x,v){return s.call(this,NS+x,v);};P.removeItem=function(x){return r.call(this,NS+x);};
+P.key=function(i){var a=own(this);return i<a.length?a[i]:null;};P.clear=function(){var t=this;own(t).forEach(function(x){r.call(t,NS+x);});};
+Object.defineProperty(P,"length",{configurable:true,get:function(){return own(this).length;}});
+if(window.indexedDB){var o=indexedDB.open.bind(indexedDB),d=indexedDB.deleteDatabase.bind(indexedDB);indexedDB.open=function(n,v){return v===undefined?o(NS+n):o(NS+n,v);};indexedDB.deleteDatabase=function(n){return d(NS+n);};}
+window.MODESK_APP="edu";})();</script><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Modesk EDU — Gestão Educacional</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='#60a5fa'/%3E%3Cstop offset='1' stop-color='#1d6fd1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(#g)'/%3E%3Cpath transform='translate(10 14.5) scale(.0688)' fill='#fff' d='M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9l0 28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5l0-24.6c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z'/%3E%3C/svg%3E"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
@@ -240,7 +248,7 @@ input:hover:not(:focus),select:hover:not(:focus),textarea:hover:not(:focus){bord
 a{color:var(--pri2)}a:hover{color:var(--pri);text-decoration:underline}
 :where(button,select,textarea,a):focus-visible{outline:2px solid var(--pri2);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
-</style></head><body>
+</style><script defer src="/__l5e/events.b979ee024b15adfd.js" data-artifact-kind="live_preview" data-artifact-id="85b78f9bb802a592e3846166346c9f878812368c" data-commit-sha="85b78f9bb802a592e3846166346c9f878812368c" data-context-token="v1.eyJwcm9qZWN0X2lkIjoibG92cF82MzBoZnpreXc0OTFkOTdwOWdmamEwOGdkaiIsImFydGlmYWN0X2tpbmQiOiJsaXZlX3ByZXZpZXciLCJhcnRpZmFjdF9pZCI6Ijg1Yjc4ZjliYjgwMmE1OTJlMzg0NjE2NjM0NmM5Zjg3ODgxMjM2OGMiLCJjb21taXRfc2hhIjoiODViNzhmOWJiODAyYTU5MmUzODQ2MTY2MzQ2YzlmODc4ODEyMzY4YyIsImV4cCI6MTc5NTAzMjc1OH0.BJOqI3kn3ROENrWCB9Rtp-p4QxmP3ylXAZEs2D0n-oM" data-consent="1"></script></head><body>
 <aside><div class="logo"><i class="fa-solid fa-graduation-cap"></i><b>Modesk EDU</b></div>
 <nav id="nav"></nav></aside>
 <main id="app"></main>
